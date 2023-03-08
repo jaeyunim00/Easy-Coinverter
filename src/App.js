@@ -1,26 +1,37 @@
 import React, { useEffect } from "react";
 
 function App() {
+  // BASE CONST
   const [coins, setCoins] = React.useState([]);
-  const [coin, setCoin] = React.useState("");
+  const [coinName, setCoinName] = React.useState("");
+  const [filteredCoin, setFilteredCoin] = React.useState([]);
 
-  const regex = new RegExp(`${coin}`, "gi");
+  //CONVERETER CONST
+  const [USD, setUSD] = React.useState("");
+  const [coinValue, setCoinValue] = React.useState("");
 
-  const handleCoinChange = (event) => {
+  const regex = new RegExp(`^${coinName}$`);
+
+  const handleCoinNameChange = (event) => {
     event.preventDefault();
-    setCoin(event.target.value);
-    console.log(coin);
+    setCoinName(event.target.value);
+    console.log(coinName);
   };
 
   const handleCoinSubmit = (event) => {
     event.preventDefault();
-    const coinNameArr = coins.map((coin) => {
-      return coin.name;
-    });
 
-    console.log(regex);
-    const filteredArr = coinNameArr.filter((item) => regex.test(item));
-    console.log(filteredArr);
+    setFilteredCoin(coins.filter((item) => regex.test(item.symbol)));
+
+    console.log(filteredCoin);
+  };
+
+  const handleUSDChange = (event) => {
+    setUSD(event.target.value);
+  };
+
+  const handleCoinChange = (event) => {
+    setCoinValue(event.target.value);
   };
 
   useEffect(() => {
@@ -36,17 +47,31 @@ function App() {
         <span>Coinverter</span>
       </div>
       <div class="coin_input">
-        <span>TyPe cOiN</span>
         <form method="get" onSubmit={handleCoinSubmit}>
-          <input type="text" value={coin} onChange={handleCoinChange} />
+          <span>코인 코드 검색</span>
+          <input
+            placeholder="e.g bitcoin 또는 BTC"
+            type="text"
+            value={coinName}
+            onChange={handleCoinNameChange}
+          />
         </form>
       </div>
-      <div class="coin_list">
-        {coins.map((coin) => {
-          return <div key={coin.id}>{coin.name}</div>;
-        })}
-      </div>
-      <h1></h1>
+      {filteredCoin.map((item) => (
+        <div class="coin_converter">
+          <div class="coin_converter_coinName">
+            {item.name}({item.symbol})
+          </div>
+          <div class="coin_converter_price">
+            <p>1฿ = {item.quotes.USD.price * 1300}₩</p>
+          </div>
+          <input value={USD} onChange={handleUSDChange} />
+          <input
+            value={1300 / (USD / item.quotes.USD.price)}
+            onCHange={handleCoinChange}
+          />
+        </div>
+      ))}
     </div>
   );
 }

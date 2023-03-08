@@ -12,9 +12,6 @@ body {
   background-color: blueviolet;
 }
 
-.coin_list {
-  width: 200px;
-  height: 500px;
-  overflow-y: scroll;
-  background-color: aqua;
+.coin_converter {
+  background-color: burlywood;
 }
