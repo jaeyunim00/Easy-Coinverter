@@ -4,6 +4,12 @@ body {
   background-color: yellow;
 }
 
+input {
+  border: 3px solid black;
+  outline: none;
+  padding: 3px;
+}
+
 .header {
   background-color: bisque;
 }
