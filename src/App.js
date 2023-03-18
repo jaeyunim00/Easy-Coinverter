@@ -65,11 +65,13 @@ function App() {
           <div class="coin_converter_price">
             <p>1฿ = {item.quotes.USD.price * 1300}₩</p>
           </div>
-          <input value={USD} onChange={handleUSDChange} />
-          <input
-            value={1300 / (USD / item.quotes.USD.price)}
-            onCHange={handleCoinChange}
-          />
+          <div className="convert_value">
+            <input value={USD} onChange={handleUSDChange} />
+            <input
+              value={1300 / (USD / item.quotes.USD.price)}
+              onCHange={handleCoinChange}
+            />
+          </div>
         </div>
       ))}
     </div>

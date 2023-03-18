@@ -1,26 +1,66 @@
 @import url(./reset.css);
 
 body {
-<<<<<<< HEAD
-=======
-  background-color: yellow;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-input {
-  border: 3px solid black;
-  outline: none;
-  padding: 3px;
->>>>>>> stylish
+.App {
+  width: 300px;
 }
 
 .header {
   background-color: bisque;
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
 
-.coin_input {
+.header span:first-child {
+  font-size: 60px;
+}
+
+.header span:last-child {
+  font-size: 40px;
+}
+
+.coin_input form {
   background-color: blueviolet;
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.coin_input form input {
+  margin-top: 10px;
+  width: 120px;
+  outline: none;
+  border: none;
+  padding: 5px;
+  border-bottom: 1px solid gray;
 }
 
 .coin_converter {
   background-color: burlywood;
+  padding: 15px 0px;
+}
+
+.coin_converter div:nth-child(2) {
+  padding: 15px 0px;
+}
+
+.convert_value {
+  display: flex;
+  flex-direction: column;
+}
+
+.convert_value input {
+  outline: none;
+  border: none;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-bottom: 1px solid gray;
 }
